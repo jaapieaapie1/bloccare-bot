@@ -54,35 +54,9 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'help') {
-        client.commands.get('help').execute(message, args);
-    }
-    if(command === 'announce') {
-        client.commands.get('announce').execute(message, args);
-    } 
-    if(command === 'clear') {
-        client.commands.get('clear').execute(message, args);
-    }
-    if(command === 'pinggame') {
-        client.commands.get('pinggame').execute(message, args);
-    }
-    if(command === 'wednesday') {
-        client.commands.get('wednesday').execute(message, args);
-    }
-    if(command === 'advent') {
-    client.commands.get('advent').execute(message, args);
-    }
-    if(command === 'credits') {
-        client.commands.get('credits').execute(message, args);
-    }
-    if(command === 'monkiflip') {
-        client.commands.get('monkiflip').execute(message, args);
-    }
-    if(command === 'uor') {
-        client.commands.get('uor').execute(message, args);
-    }
-    if(command === 'suggest') {
-        client.commands.get('suggest').execute(message, args);
+    let cmd = client.commands.get(command);
+    if(cmd) {
+        cmd.execute(message, args);
     }
 })
 
